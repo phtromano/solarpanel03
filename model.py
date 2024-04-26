@@ -181,13 +181,13 @@ def highest_point_of_the_sun(date, latitude, longitude):
 #     phi_p = sunpos.loc[chosen_date].azimuth
 
 def angles_to_xyz(zenith, azimuth):
-    r=pvlib.solarposition.nrel_earthsun_distance(times) * 149597870700
+    #r=pvlib.solarposition.nrel_earthsun_distance(times) * 149597870700
     # The unit normal vector to the solar panel expressed in terms of zenith and azimuth angles
     zenith=np.deg2rad(zenith)
     azimuth=np.deg2rad(azimuth)
-    x = r * np.sin(zenith) * np.cos(azimuth)
-    y = r * np.sin(zenith) * np.sin(azimuth)
-    z = r * np.cos(zenith)
+    x = np.sin(zenith) * np.cos(azimuth)
+    y = np.sin(zenith) * np.sin(azimuth)
+    z = np.cos(zenith)
     return (x, y, z)
 
 #print(angles_to_xyz(sunpos.loc[chosen_date].zenith[1], sunpos.loc[chosen_date].azimuth[1]))
